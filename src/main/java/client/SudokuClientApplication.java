@@ -151,7 +151,7 @@ public class SudokuClientApplication extends Application {
         sudokuServer = new SudokuServerInterfaceImpl();
         sudokuGrid = new TextField[9][9];
         btnStartSudoku = new MenuButton();
-        lblEndGame = new Label("Край на играта");
+        lblEndGame = new Label("End of game");
 
 
         HBox hbox = new HBox();
@@ -177,16 +177,16 @@ public class SudokuClientApplication extends Application {
 
         VBox vBoxButtons = new VBox();
 
-        MenuItem easySudoku = new MenuItem("Лесна");
+        MenuItem easySudoku = new MenuItem("Easy");
         easySudoku.setOnAction(e -> startGame(SudokuLevel.Easy));
-        MenuItem mediumSudoku = new MenuItem("Средна");
+        MenuItem mediumSudoku = new MenuItem("Medium");
         mediumSudoku.setOnAction(e -> startGame(SudokuLevel.Medium));
-        MenuItem hardSudoku = new MenuItem("Трудна");
+        MenuItem hardSudoku = new MenuItem("Hard");
         hardSudoku.setOnAction(e -> startGame(SudokuLevel.Hard));
-        btnStartSudoku = new MenuButton("Започни нова игра", null, easySudoku, mediumSudoku, hardSudoku);
+        btnStartSudoku = new MenuButton("New Game", null, easySudoku, mediumSudoku, hardSudoku);
         vBoxButtons.getChildren().add(btnStartSudoku);
 
-        btnShowAnswer = new Button("Отказвам се");
+        btnShowAnswer = new Button("Give up");
         btnShowAnswer.setOnAction(this::showAnswer);
         btnShowAnswer.setVisible(false);
         vBoxButtons.getChildren().add(btnShowAnswer);
@@ -194,14 +194,14 @@ public class SudokuClientApplication extends Application {
         vBoxButtons.getChildren().add(lblEndGame);
         lblEndGame.setVisible(false);
 
-        Button btnExit = new Button("Излез");
+        Button btnExit = new Button("Exit");
         btnExit.setOnAction(actionEvent -> System.exit(0));
         vBoxButtons.getChildren().add(btnExit);
 
         hbox.getChildren().addAll(gridPaneSudoku, vBoxButtons);
         Scene scene= new Scene(hbox, 600, 500);
         initializeRMI();
-        stage.setTitle("Судоку");
+        stage.setTitle("Sudoku");
         stage.setScene(scene);
         stage.show();
     }
